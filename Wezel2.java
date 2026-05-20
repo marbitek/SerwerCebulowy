@@ -68,11 +68,11 @@ public class Wezel2 {
                     InetAddress serverAddress = InetAddress.getByName(nextIP); //TU BĘDZIE DO ZMIANY
 
                     try (DatagramSocket tempSocket = new DatagramSocket()){
-                        DatagramPacket sentPacket = new DatagramPacket(byteMessageToForward, byteMessageToForward.length, serverAddress, Config.PORT);
+                        DatagramPacket sentPacket = new DatagramPacket(byteMessageToForward, byteMessageToForward.length, serverAddress, 9000);
                         tempSocket.send(sentPacket);
                         
                         //odbieramy potwierdzenie otrzymania wiadomosci z kolejnego wezła
-                        DatagramPacket confirmation = new DatagramPacket(new byte[Config.BUFFER_SIZE],Config.BUFFER_SIZE);
+                        DatagramPacket confirmation = new DatagramPacket(new byte[BUFFER_SIZE],BUFFER_SIZE);
                         tempSocket.setSoTimeout(10000); //1,5 sekundy czekamy na odp
 
                         try{

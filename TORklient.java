@@ -27,11 +27,12 @@ public class TORklient {
             
         String IP_SERWER = config.getProperty("IP_SERWER");
         String IP_KLIENT = config.getProperty("IP_KLIENT");
-       // String IP_KLIENT2 = config.getProperty("IP_KLIENT2");
+        String IP_KLIENT2 = config.getProperty("IP_KLIENT2");
     	String IP_W1 = config.getProperty("IP_W1");
         String IP_W2 = config.getProperty("IP_W2");
+        String IP_W3 = config.getProperty("IP_W3");
         String KLIENT_PORT = config.getProperty("KLIENT_PORT");
-        //String KLIENT2_PORT = config.getProperty("KLIENT2_PORT");
+        String KLIENT2_PORT = config.getProperty("KLIENT2_PORT");
         
 
     	//otwarcie gniazda
@@ -39,12 +40,12 @@ public class TORklient {
         DatagramSocket socket = new DatagramSocket(port); 
         
     	//inicjalizacja 
-        String[] ip = {IP_W1, IP_W2};
+        String[] ip = {IP_W1, IP_W2, IP_W3};
         String ip_serwer = IP_SERWER;
     	String[] trasaIP = trasa(ip);
         //kaString[] trasaIP = ip;
-        //int liczbaW = liczbaWezlow(); //liczba węzłów, 2 lub 3
-        int liczbaW = 2;
+        int liczbaW = liczbaWezlow(); //liczba węzłów, 2 lub 3
+        //int liczbaW = 2;
     	int krok = 0; //0 bo jestesmy w kliencie
     	String message, paczka;
     	
@@ -72,7 +73,7 @@ public class TORklient {
         	//wysłanie wiadomości
         	DatagramPacket sentPacket = new DatagramPacket(stringContents, stringContents.length);
             sentPacket.setAddress(serverAddress);
-            sentPacket.setPort(Config.PORT);
+            sentPacket.setPort(9000);
             socket.send(sentPacket);
             
             //odbieramy potwierdzenie otrzymania wiadomosci z serwera
@@ -103,7 +104,7 @@ public class TORklient {
     public static int liczbaWezlow() {
     	//losowa liczba 2-3
     	Random rand = new Random();
-    	int liczbaW = rand.nextInt(1, 2);
+    	int liczbaW = rand.nextInt(2, 4);
     	return liczbaW;
     }
     

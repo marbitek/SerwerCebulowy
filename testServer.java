@@ -45,7 +45,7 @@ public class testServer {
 
                     // odpowiedz (Twój oryginalny kod)
                     String[] czesci = message.split("\\$");
-                    String odpowiedz = czesci[0] + "$" + czesci[1] + "$" + czesci[2] + "$" +  czesci[3] + "twoja wiadomość: " + czesci[3];
+                    String odpowiedz = czesci[0] + "$" + czesci[1] + "$" + czesci[2] + "$" +  czesci[3] + "$" + "twoja wiadomość: " + czesci[4];
                     byte[] byteResponse = odpowiedz.getBytes("utf8");
 
                     DatagramPacket response = new DatagramPacket(byteResponse, byteResponse.length, address, port);
